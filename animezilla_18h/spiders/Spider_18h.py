@@ -11,14 +11,16 @@ class Spider18hSpider(scrapy.Spider):
         #url = "'"+url.strip()+"'"
         #print(url) 
         #start_urls.append(url)
-    for i in range(80,100):
+    for i in range(1,1000):
         url = 'https://18h.animezilla.com/manga/'+str(i)
-        r = requests.get(url)
-        if r.status_code == 200:
-            print('%s yes!!!'%url)
-            start_urls.append(url)
+        start_urls.append(url)
+    
+    def parse(self,response):
+        if response.status == 200:
+            yield scrapy.Request(url=response.url,callback=self.parse_url)
+            print('%s yes!!!'%response.url)
 
-    def parse(self, response):
+    def parse_url(self, response):
         #comicname表示漫画名字
         #page 表示当前页数
         #page_num表示漫画总页数

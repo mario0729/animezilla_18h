@@ -60,6 +60,10 @@ ITEM_PIPELINES = {
 DOWNLOADER_MIDDLEWARES = {
    'animezilla_18h.middlewares.animezilla': 543,
 }
+LOG_ENABLED = True
+LOG_ENCODING = 'utf-8'
+LOG_FILE = "mySpider.log"
+LOG_LEVEL = "DEBUG"
 
 # Crawl responsibly by identifying yourself (and your website) on the user-agent
 #USER_AGENT = 'animezilla_18h (+http://www.yourdomain.com)'
